@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gabicfa/Documents/SuperComp/Projetos/Arnaldo/crawlerSequencial.cpp
+iostream
+-
+string
+-
+stdio.h
+-
+boost/regex.hpp
+-
+chrono
+-
+curl/curl.h
+-
+curl/easy.h
+-
+sstream
+-
+fstream
+-
+

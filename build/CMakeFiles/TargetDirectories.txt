@@ -1,0 +1,5 @@
+/home/gabicfa/Documents/SuperComp/Projetos/Arnaldo/build/CMakeFiles/rebuild_cache.dir
+/home/gabicfa/Documents/SuperComp/Projetos/Arnaldo/build/CMakeFiles/edit_cache.dir
+/home/gabicfa/Documents/SuperComp/Projetos/Arnaldo/build/CMakeFiles/crawlerDIS.dir
+/home/gabicfa/Documents/SuperComp/Projetos/Arnaldo/build/CMakeFiles/crawlerSEQ.dir
+/home/gabicfa/Documents/SuperComp/Projetos/Arnaldo/build/CMakeFiles/crawlerPAR.dir

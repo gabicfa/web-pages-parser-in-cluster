@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic -O2 CMakeFiles/crawlerPAR.dir/crawlerParalelo.cpp.o  -o crawlerPAR -lcurl -lboost_regex -lpthread 
