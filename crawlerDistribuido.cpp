@@ -329,7 +329,7 @@ int main(int argc, char** argv) {
         cout << jsonFinal << '\n';//adiciona string out recebida a string jsonFinal
 
         ofstream myfile;
-        myfile.open ("../out.txt");//criação de arquivo com medidas de desempenho
+        myfile.open ("../outDIS.txt");//criação de arquivo com medidas de desempenho
         myfile << tempoOciosoTotal << '\n';
         myfile << numProdTotal << '\n';
 

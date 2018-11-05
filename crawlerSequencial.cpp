@@ -245,7 +245,7 @@ int main(int argc, char** argv) {
     }
     cout << out;
     ofstream myfile;
-    myfile.open ("../out.txt");
+    myfile.open ("../outSEQ.txt");
     myfile << tempoOcioso << '\n';
     myfile << numProd << '\n';
 

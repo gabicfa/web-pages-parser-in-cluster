@@ -388,7 +388,7 @@ int main(int argc, char *argv[]) {
     cout << finalJSON;
 
     ofstream myfile;
-    myfile.open ("../out.txt");
+    myfile.open ("../outPAR.txt");
     myfile << tempoOcioso << '\n';
     myfile << numProd << '\n';
 

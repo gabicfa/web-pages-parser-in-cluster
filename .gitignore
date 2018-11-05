@@ -36,7 +36,6 @@
 ehthumbs.db
 Thumbs.db
 
-.gitignore
 .vscode
 supercomp-certo.pem
-build/
+
