@@ -2,12 +2,6 @@ import os
 
 from subprocess import PIPE, run
 
-# def out(command):
-#     result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True)
-#     return result.stdout
-
-# os.system("make") 
-
 links = [
 "https://www.magazineluiza.com.br/notebook-lenovo-ideapad/informatica/s/in/leip/",
 "https://www.magazineluiza.com.br/dvd-player/tv-e-video/s/et/tvdb/",
