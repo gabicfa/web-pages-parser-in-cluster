@@ -10,9 +10,9 @@ from subprocess import PIPE, run
 
 links = [
 "https://www.magazineluiza.com.br/notebook-lenovo-ideapad/informatica/s/in/leip/",
-"https://www.magazineluiza.com.br/dvd-player/tv-e-video/s/et/tvdb/"
-# "https://www.magazineluiza.com.br/hd-externo/informatica/s/in/hdex/",
-# "https://www.magazineluiza.com.br/adega/eletrodomesticos/s/ed/adeg/"
+"https://www.magazineluiza.com.br/dvd-player/tv-e-video/s/et/tvdb/",
+"https://www.magazineluiza.com.br/hd-externo/informatica/s/in/hdex/",
+"https://www.magazineluiza.com.br/adega/eletrodomesticos/s/ed/adeg/"
 ]
 
 t_ocioso_dis_1 = []
@@ -119,7 +119,6 @@ if(not erro):
         if(i!=len(t_ocioso_seq)-1):
             f.write(t_ocioso_seq[i] + ',')
         else:
-            print(t_ocioso_seq[i])
             f.write(t_ocioso_seq[i])
     f.write("]"+ '\n')
 
