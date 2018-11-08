@@ -331,7 +331,7 @@ void produceUrls(list<string>& listofUrls, Semaphore& accessListofUrls, Semaphor
             accesstempoOcioso.release();
         }
         else{
-            cerr << "Erro ao carregar pagina " << p << "\n";
+            cerr << "Erro ao carregar pagina " << p << "\n";//Erro no site da magazineLuiza - as vezes a página sai do ar.
             break;
         }
     }

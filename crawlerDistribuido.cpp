@@ -226,7 +226,7 @@ int main(int argc, char** argv) {
                 urls.pop_back();
             }
             else{
-                cerr << "Erro ao carregar pagina " << p << "\n";
+                cerr << "Erro ao carregar pagina " << p << "\n";//Erro no site da magazineLuiza - as vezes a página sai do ar.
                 break;
             }
 
@@ -285,7 +285,7 @@ int main(int argc, char** argv) {
                 string out = collectProduct(productPage, url);
                 t3 = high_resolution_clock::now();
                 tempoProd = duration_cast<duration<double> >(t3 - t1);
-                cerr << "Tempo gasto no produto: " << to_string(tempoProd.count())<<'\n';
+                // cerr << "Tempo gasto no produto: " << to_string(tempoProd.count())<<'\n';
                 world.send(n-1, 0, out);//envia string out com informações do produto em formato json para processo n-1
             }
         } 
