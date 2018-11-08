@@ -6,30 +6,46 @@ def out(command):
     result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True)
     return result.stdout
 
-os.system("make") 
+# os.system("make") 
 
 links = [
-"https://www.magazineluiza.com.br/notebook-lenovo-ideapad/informatica/s/in/leip/", 
-"https://www.magazineluiza.com.br/dvd-player/tv-e-video/s/et/tvdb/",
-"https://www.magazineluiza.com.br/hd-externo/informatica/s/in/hdex/",
-"https://www.magazineluiza.com.br/adega/eletrodomesticos/s/ed/adeg/"
+"https://www.magazineluiza.com.br/notebook-lenovo-ideapad/informatica/s/in/leip/",
+"https://www.magazineluiza.com.br/dvd-player/tv-e-video/s/et/tvdb/"
+# "https://www.magazineluiza.com.br/hd-externo/informatica/s/in/hdex/",
+# "https://www.magazineluiza.com.br/adega/eletrodomesticos/s/ed/adeg/"
 ]
+
+t_ocioso_dis_1 = []
+t_medProd_dis_1 = []
+t_total_dis_1 = []
+
+t_ocioso_dis_2 = []
+t_medProd_dis_2 = []
+t_total_dis_2 = []
+
+t_ocioso_dis_3 = []
+t_medProd_dis_3 = []
+t_total_dis_3 = []
 
 t_ocioso_dis_4 = []
 t_medProd_dis_4 = []
 t_total_dis_4 = []
 
-t_ocioso_dis_8 = []
-t_medProd_dis_8 = []
-t_total_dis_8 = []
+t_ocioso_dis_5 = []
+t_medProd_dis_5 = []
+t_total_dis_5 = []
 
-t_ocioso_dis_16 = []
-t_medProd_dis_16 = []
-t_total_dis_16 = []
+t_ocioso_dis_6 = []
+t_medProd_dis_6 = []
+t_total_dis_6 = []
 
-t_ocioso_par_5_5 = []
-t_medProd_par_5_5 = []
-t_total_par_5_5 = []
+t_ocioso_dis_7 = []
+t_medProd_dis_7 = []
+t_total_dis_7 = []
+
+t_ocioso_par_3_3 = []
+t_medProd_par_3_3 = []
+t_total_par_3_3 = []
 
 t_ocioso_seq = []
 t_medProd_seq = []
@@ -43,9 +59,9 @@ for l in links:
 
     print(l)
     print("Crawler Sequencial sendo feito...")
-    comando = "./crawlerSEQ " + l
+    comando = "build/crawlerSEQ " + l
     json = out(comando)
-    with open('../outSEQ.txt') as o:
+    with open('out.txt') as o:
         lines = o.read().splitlines()
 
     t_ocioso_seq.append(lines[0])
@@ -59,27 +75,27 @@ for l in links:
         print("ERRO NO SITE MAGAZINE, RODE O SCRIPT NOVAMENTE OU TENTE MAIS TARDE")
         break
     
-    print("Crawler Paralelo sendo feito com 5 threads produtoras e 5 consumidoras...")
-    comando = "./crawlerPAR " + l + " 5 5"
+    print("Crawler Paralelo sendo feito com 3 threads produtoras e 3 consumidoras...")
+    comando = "build/crawlerPAR " + l + " 3 3"
     json = out(comando)
-    with open('../outPAR.txt') as o:
+    with open('out.txt') as o:
         lines = o.read().splitlines()
 
-    t_ocioso_par_5_5.append(lines[0])
-    t_medProd_par_5_5.append(lines[2])
-    t_total_par_5_5.append(lines[3])
+    t_ocioso_par_3_3.append(lines[0])
+    t_medProd_par_3_3.append(lines[2])
+    t_total_par_3_3.append(lines[3])
 
-    mpilist = ["4","8","16"]
-    mpilistlistocioso = [t_ocioso_dis_4,t_ocioso_dis_8, t_ocioso_dis_16]
-    mpilistlistmedProd = [t_medProd_dis_4,t_medProd_dis_8,t_medProd_dis_16]
-    mpilistlisttotal = [t_total_dis_4, t_total_dis_8, t_total_dis_16]
+    mpilist = ["4","8","12","16","20","24","28"]
+    hstfile = ["host0","host1","host2","host3","host4","host5","host6"]
+    mpilistlistocioso = [t_ocioso_dis_1,t_ocioso_dis_2,t_ocioso_dis_3,t_ocioso_dis_4,t_ocioso_dis_5,t_ocioso_dis_6,t_ocioso_dis_7]
+    mpilistlistmedProd = [t_medProd_dis_1,t_medProd_dis_2,t_medProd_dis_3,t_medProd_dis_4,t_medProd_dis_5,t_medProd_dis_6,t_medProd_dis_7]
+    mpilistlisttotal = [t_total_dis_1, t_total_dis_2, t_total_dis_3,t_total_dis_4,t_total_dis_5,t_total_dis_6, t_total_dis_7]
     
-    for m in range (0,len(mpilist)): 
-
-        print("Crawler Distribuido sendo feito com " + mpilist[m] + " processos...")
-        comando = "mpiexec -n "+ mpilist[m] +" ./crawlerDIS " + l
+    for m in range (0, len(mpilist)):
+        print("Crawler Distribuido sendo feito com " + mpilist[m] + " processos e "+ str(m+1) +" maquinas")
+        comando = "mpiexec -n "+ mpilist[m] +" -hostfile /hostfiles/"+ hstfile[m]+ " /build/crawlerDIS " + l
         json = out(comando)
-        with open('../outDIS.txt') as o:
+        with open('out.txt') as o:
             lines = o.read().splitlines()
 
         mpilistlistocioso[m].append(lines[0])
@@ -119,98 +135,56 @@ if(not erro):
             f.write(t_total_seq[i])
     f.write("]"+ '\n')
 
-    f.write("t_ocioso_par_5_5=[")
-    for i in range (0,len(t_ocioso_par_5_5)):
-        if(i!=len(t_ocioso_par_5_5)-1):
-            f.write(t_ocioso_par_5_5[i] + ',')
+    f.write("t_ocioso_par_3_3=[")
+    for i in range (0,len(t_ocioso_par_3_3)):
+        if(i!=len(t_ocioso_par_3_3)-1):
+            f.write(t_ocioso_par_3_3[i] + ',')
         else:
-            f.write(t_ocioso_par_5_5[i])
+            f.write(t_ocioso_par_3_3[i])
     f.write("]"+ '\n')
 
-    f.write("t_medProd_par_5_5=[")
-    for i in range (0,len(t_medProd_par_5_5)):
-        if(i!=len(t_medProd_par_5_5)-1):
-            f.write(t_medProd_par_5_5[i] + ',')
+    f.write("t_medProd_par_3_3=[")
+    for i in range (0,len(t_medProd_par_3_3)):
+        if(i!=len(t_medProd_par_3_3)-1):
+            f.write(t_medProd_par_3_3[i] + ',')
         else:
-            f.write(t_medProd_par_5_5[i])
+            f.write(t_medProd_par_3_3[i])
     f.write("]"+ '\n')
 
-    f.write("t_total_par_5_5=[")
-    for i in range (0,len(t_total_par_5_5)):
-        if(i!=len(t_total_par_5_5)-1):
-            f.write(t_total_par_5_5[i] + ',')
+    f.write("t_total_par_3_3=[")
+    for i in range (0,len(t_total_par_3_3)):
+        if(i!=len(t_total_par_3_3)-1):
+            f.write(t_total_par_3_3[i] + ',')
         else:
-            f.write(t_total_par_5_5[i])
+            f.write(t_total_par_3_3[i])
     f.write("]"+ '\n')
 
-    f.write("t_ocioso_dis_4=[")
-    for i in range (0,len(t_ocioso_dis_4)):
-        if(i!=len(t_ocioso_dis_4)-1):
-            f.write(t_ocioso_dis_4[i] + ',')
-        else:
-            f.write(t_ocioso_dis_4[i])
-    f.write("]"+ '\n')
-
-    f.write("t_medProd_dis_4=[")
-    for i in range (0,len(t_medProd_dis_4)):
-        if(i!=len(t_medProd_dis_4)-1):
-            f.write(t_medProd_dis_4[i] + ',')
-        else:
-            f.write(t_medProd_dis_4[i])
-    f.write("]"+ '\n')
-
-    f.write("t_total_dis_4=[")
-    for i in range (0,len(t_total_dis_4)):
-        if(i!=len(t_total_dis_4)-1):
-            f.write(t_total_dis_4[i] + ',')
-        else:
-            f.write(t_total_dis_4[i])
-    f.write("]"+ '\n')
-
-    f.write("t_ocioso_dis_8=[")
-    for i in range (0,len(t_ocioso_dis_8)):
-        if(i!=len(t_ocioso_dis_8)-1):
-            f.write(t_ocioso_dis_8[i] + ',')
-        else:
-            f.write(t_ocioso_dis_8[i])
-    f.write("]"+ '\n')
-
-    f.write("t_medProd_dis_8=[")
-    for i in range (0,len(t_medProd_dis_8)):
-        if(i!=len(t_medProd_dis_8)-1):
-            f.write(t_medProd_dis_8[i] + ',')
-        else:
-            f.write(t_medProd_dis_8[i])
-    f.write("]"+ '\n')
-
-    f.write("t_total_dis_8=[")
-    for i in range (0,len(t_total_dis_8)):
-        if(i!=len(t_total_dis_8)-1):
-            f.write(t_total_dis_8[i] + ',')
-        else:
-            f.write(t_total_dis_8[i])
-    f.write("]"+ '\n')
-
-    f.write("t_ocioso_dis_16=[")
-    for i in range (0,len(t_ocioso_dis_16)):
-        if(i!=len(t_ocioso_dis_16)-1):
-            f.write(t_ocioso_dis_16[i] + ',')
-        else:
-            f.write(t_ocioso_dis_16[i])
-    f.write("]"+ '\n')
-
-    f.write("t_medProd_dis_16=[")
-    for i in range (0,len(t_medProd_dis_16)):
-        if(i!=len(t_medProd_dis_16)-1):
-            f.write(t_medProd_dis_16[i] + ',')
-        else:
-            f.write(t_medProd_dis_16[i])
-    f.write("]"+ '\n')
-
-    f.write("t_total_dis_16=[")
-    for i in range (0,len(t_total_dis_16)):
-        if(i!=len(t_total_dis_16)-1):
-            f.write(t_total_dis_16[i] + ',')
-        else:
-            f.write(t_total_dis_16[i])
-    f.write("]"+ '\n')
+    for m in range (0, len(mpilistlistocioso)):
+        s = "t_ocioso_dis_"+str(m+1)
+        f.write(s+"=[")
+        for i in range (0,len(mpilistlistocioso[m])):
+            if(i!=len(mpilistlistocioso[m])-1):
+                f.write(mpilistlistocioso[m][i] + ',')
+            else:
+                f.write(mpilistlistocioso[m][i])
+        f.write("]"+ '\n')
+    
+    for m in range (0, len(mpilistlistmedProd)):
+        s = "t_medProd_dis_"+str(m+1)
+        f.write(s+"=[")
+        for i in range (0,len(mpilistlistmedProd[m])):
+            if(i!=len(mpilistlistmedProd[m])-1):
+                f.write(mpilistlistmedProd[m][i] + ',')
+            else:
+                f.write(mpilistlistmedProd[m][i])
+        f.write("]"+ '\n')
+    
+    for m in range (0, len(mpilistlisttotal)):
+        s = "t_total_dis_"+str(m+1)
+        f.write(s+"=[")
+        for i in range (0,len(mpilistlisttotal[m])):
+            if(i!=len(mpilistlisttotal[m])-1):
+                f.write(mpilistlisttotal[m][i] + ',')
+            else:
+                f.write(mpilistlisttotal[m][i])
+        f.write("]"+ '\n')
