@@ -95,7 +95,7 @@ for l in links:
     
     for m in range (0, len(mpilist)):
         print("Crawler Distribuido sendo feito com " + mpilist[m] + " processos e "+ str(m+1) +" maquinas")
-        comando = "mpiexec -n "+ mpilist[m] + " build/crawlerDIS " + l
+        comando = "mpiexec -n "+ mpilist[m] +" -hostfile hostfiles/"+hstfile[m]+ " build/crawlerDIS " + l
         print(comando)
         json = out(comando)
         with open('out.txt') as o:
