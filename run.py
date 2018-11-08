@@ -111,56 +111,70 @@ if(not erro):
     f.write("t_num_prod=[")
     for i in range (0,len(t_num_prod)):
         if(i!=len(t_num_prod)-1):
+            print(t_num_prod[i])
             f.write(t_num_prod[i] + ',')
         else:
+            print(t_num_prod[i])
             f.write(t_num_prod[i])
     f.write("]"+ '\n')
 
     f.write("t_ocioso_seq=[")
     for i in range (0,len(t_ocioso_seq)):
         if(i!=len(t_ocioso_seq)-1):
+            print(t_ocioso_seq[i])
             f.write(t_ocioso_seq[i] + ',')
         else:
+            print(t_ocioso_seq[i])
             f.write(t_ocioso_seq[i])
     f.write("]"+ '\n')
 
     f.write("t_medProd_seq=[")
     for i in range (0,len(t_medProd_seq)):
         if(i!=len(t_medProd_seq)-1):
+            print(t_medProd_seq[i])
             f.write(t_medProd_seq[i] + ',')
         else:
+            print(t_medProd_seq[i])
             f.write(t_medProd_seq[i])
     f.write("]"+ '\n')
 
     f.write("t_total_seq=[")
     for i in range (0,len(t_total_seq)):
         if(i!=len(t_total_seq)-1):
+            print(t_total_seq[i])
             f.write(t_total_seq[i] + ',')
         else:
+            print(t_total_seq[i])
             f.write(t_total_seq[i])
     f.write("]"+ '\n')
 
     f.write("t_ocioso_par_3_3=[")
     for i in range (0,len(t_ocioso_par_3_3)):
         if(i!=len(t_ocioso_par_3_3)-1):
+            print(t_ocioso_par_3_3[i])
             f.write(t_ocioso_par_3_3[i] + ',')
         else:
+            print(t_ocioso_par_3_3[i])
             f.write(t_ocioso_par_3_3[i])
     f.write("]"+ '\n')
 
     f.write("t_medProd_par_3_3=[")
     for i in range (0,len(t_medProd_par_3_3)):
         if(i!=len(t_medProd_par_3_3)-1):
+            print(t_medProd_par_3_3[i])
             f.write(t_medProd_par_3_3[i] + ',')
         else:
+            print(t_medProd_par_3_3[i])
             f.write(t_medProd_par_3_3[i])
     f.write("]"+ '\n')
 
     f.write("t_total_par_3_3=[")
     for i in range (0,len(t_total_par_3_3)):
         if(i!=len(t_total_par_3_3)-1):
+            print(t_total_par_3_3[i])
             f.write(t_total_par_3_3[i] + ',')
         else:
+            print(t_total_par_3_3[i])
             f.write(t_total_par_3_3[i])
     f.write("]"+ '\n')
 
@@ -169,8 +183,10 @@ if(not erro):
         f.write(s+"=[")
         for i in range (0,len(mpilistlistocioso[m])):
             if(i!=len(mpilistlistocioso[m])-1):
+                print(mpilistlistocioso[m][i])
                 f.write(mpilistlistocioso[m][i] + ',')
             else:
+                print(mpilistlistocioso[m][i])
                 f.write(mpilistlistocioso[m][i])
         f.write("]"+ '\n')
     
@@ -179,8 +195,10 @@ if(not erro):
         f.write(s+"=[")
         for i in range (0,len(mpilistlistmedProd[m])):
             if(i!=len(mpilistlistmedProd[m])-1):
+                print((mpilistlistmedProd[m][i])
                 f.write(mpilistlistmedProd[m][i] + ',')
             else:
+                print(mpilistlistmedProd[m][i])
                 f.write(mpilistlistmedProd[m][i])
         f.write("]"+ '\n')
     
@@ -189,7 +207,9 @@ if(not erro):
         f.write(s+"=[")
         for i in range (0,len(mpilistlisttotal[m])):
             if(i!=len(mpilistlisttotal[m])-1):
+                print(mpilistlisttotal[m][i])
                 f.write(mpilistlisttotal[m][i] + ',')
             else:
+                print(mpilistlisttotal[m][i])
                 f.write(mpilistlisttotal[m][i])
         f.write("]"+ '\n')
