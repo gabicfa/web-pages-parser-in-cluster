@@ -60,6 +60,7 @@ for l in links:
     print(l)
     print("Crawler Sequencial sendo feito...")
     comando = "build/crawlerSEQ " + l
+    print(comando)
     json = out(comando)
     with open('out.txt') as o:
         lines = o.read().splitlines()
@@ -77,6 +78,7 @@ for l in links:
     
     print("Crawler Paralelo sendo feito com 3 threads produtoras e 3 consumidoras...")
     comando = "build/crawlerPAR " + l + " 3 3"
+    print(comando)
     json = out(comando)
     with open('out.txt') as o:
         lines = o.read().splitlines()
@@ -93,7 +95,8 @@ for l in links:
     
     for m in range (0, len(mpilist)):
         print("Crawler Distribuido sendo feito com " + mpilist[m] + " processos e "+ str(m+1) +" maquinas")
-        comando = "mpiexec -n "+ mpilist[m] +" -hostfile /hostfiles/"+ hstfile[m]+ " /build/crawlerDIS " + l
+        comando = "mpiexec -n "+ mpilist[m] + " build/crawlerDIS " + l
+        print(comando)
         json = out(comando)
         with open('out.txt') as o:
             lines = o.read().splitlines()
@@ -101,7 +104,9 @@ for l in links:
         mpilistlistocioso[m].append(lines[0])
         mpilistlistmedProd[m].append(lines[2])
         mpilistlisttotal[m].append(lines[3])
-   
+
+
+
 if(not erro):
     f.write("t_num_prod=[")
     for i in range (0,len(t_num_prod)):
