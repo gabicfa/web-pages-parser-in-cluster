@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic -O2 CMakeFiles/crawlerSEQ.dir/crawlerSequencial.cpp.o  -o crawlerSEQ -lcurl -lboost_regex 
