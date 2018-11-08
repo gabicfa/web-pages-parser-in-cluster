@@ -234,7 +234,7 @@ void consumePages(list<string>& listofPages, Semaphore& accessListofPages, Semap
         t2 = high_resolution_clock::now();
         tempoProd = duration_cast<duration<double> >(t2 - t1);
 
-        // cerr << "Tempo gasto no produto: " << tempoProd.count() + ociosoProd << '\n'; //Tempo gasto no produto
+        // << "Tempo gasto no produto: " << tempoProd.count() + ociosoProd << '\n'; //Tempo gasto no produto
         
         accessJSON.acquire();
             *tempJson = finalJSON + jsonProduct;
@@ -311,7 +311,6 @@ void produceUrls(list<string>& listofUrls, Semaphore& accessListofUrls, Semaphor
         urlsPage = findMatchesPages(page, total, p);
         if(urlsPage.size()>0){
             nextPageUrl = urlsPage.back();
-            cout << nextPageUrl << '\n';
             urlsPage.pop_back();
             numProd+=urlsPage.size();
             accessListofUrls.acquire();
