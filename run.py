@@ -2,9 +2,9 @@ import os
 
 from subprocess import PIPE, run
 
-def out(command):
-    result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True)
-    return result.stdout
+# def out(command):
+#     result = run(command, stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True)
+#     return result.stdout
 
 # os.system("make") 
 
@@ -61,7 +61,8 @@ for l in links:
     print("Crawler Sequencial sendo feito...")
     comando = "build/crawlerSEQ " + l
     print(comando)
-    json = out(comando)
+    # json = out(comando)
+    json = os.system(comando)
     with open('out.txt') as o:
         lines = o.read().splitlines()
 
@@ -79,7 +80,8 @@ for l in links:
     print("Crawler Paralelo sendo feito com 3 threads produtoras e 3 consumidoras...")
     comando = "build/crawlerPAR " + l + " 3 3"
     print(comando)
-    json = out(comando)
+    # json = out(comando)
+    json = os.system(comando)
     with open('out.txt') as o:
         lines = o.read().splitlines()
 
@@ -95,9 +97,11 @@ for l in links:
     
     for m in range (0, len(mpilist)):
         print("Crawler Distribuido sendo feito com " + mpilist[m] + " processos e "+ str(m+1) +" maquinas")
-        comando = "mpiexec -n "+ mpilist[m] +" -hostfile hostfiles/"+hstfile[m]+ " build/crawlerDIS " + l
+        # comando = "mpiexec -n "+ mpilist[m] +" -hostfile hostfiles/"+hstfile[m]+ " build/crawlerDIS " + l
+        comando = "mpiexec -n "+ mpilist[m] +" build/crawlerDIS " + l
         print(comando)
-        json = out(comando)
+        # json = out(comando)
+        json = os.system(comando)
         with open('out.txt') as o:
             lines = o.read().splitlines()
 
@@ -195,7 +199,7 @@ if(not erro):
         f.write(s+"=[")
         for i in range (0,len(mpilistlistmedProd[m])):
             if(i!=len(mpilistlistmedProd[m])-1):
-                print((mpilistlistmedProd[m][i])
+                print(mpilistlistmedProd[m][i])
                 f.write(mpilistlistmedProd[m][i] + ',')
             else:
                 print(mpilistlistmedProd[m][i])

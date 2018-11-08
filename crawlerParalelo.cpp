@@ -234,7 +234,7 @@ void consumePages(list<string>& listofPages, Semaphore& accessListofPages, Semap
         t2 = high_resolution_clock::now();
         tempoProd = duration_cast<duration<double> >(t2 - t1);
 
-        cerr << "Tempo gasto no produto: " << tempoProd.count() + ociosoProd << '\n'; //Tempo gasto no produto
+        // cerr << "Tempo gasto no produto: " << tempoProd.count() + ociosoProd << '\n'; //Tempo gasto no produto
         
         accessJSON.acquire();
             *tempJson = finalJSON + jsonProduct;

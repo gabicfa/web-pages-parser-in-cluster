@@ -226,7 +226,7 @@ int main(int argc, char** argv) {
 
                 t3 = high_resolution_clock::now();
                 tempoProd = duration_cast<duration<double> >(t3 - t1);
-                cerr << "Tempo gasto no produto: " << tempoProd.count() << '\n' << '\n'; //Tempo gasto no produto
+                // cerr << "Tempo gasto no produto: " << tempoProd.count() << '\n' << '\n'; //Tempo gasto no produto
                 numProd+=1;
             }
             nextPageUrl = urls[urls.size()-1];
