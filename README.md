@@ -11,7 +11,7 @@ Given a product display page, the web crawler extracts the following information
 6. product category
 7. display page url
 
-The identification of product pages is made based on their category, which means that the developed crawler is pointed to a page with the products' category, and it manages to obtain the product pages, linking with possible pagination of the listing.
+The identification of product pages is made based on their category, which means that the developed crawler is pointed to a page with the products' category and manages to obtain the product pages, dealing with possible listing pagination.
 
 ## URLs Suportadas
 
