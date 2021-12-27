@@ -1,6 +1,6 @@
 # Web Pages Parser In Cluster
 
-For Insper's Supercomputers module's second project, we worked with a problem in which concurrency plays a fundamental role in achieving good performance: downloading and analyzing web pages. For this study, a crawler that identifies product pages on an e-commerce site and extracts basic product information was created. 
+For Insper's Supercomputing module's second project, we worked with a problem in which concurrency plays a fundamental role in achieving good performance: downloading and analyzing web pages. For this study, a crawler that identifies product pages on an e-commerce site and extracts basic product information was created. 
 Given a product display page, the web crawler extracts the following information:
 
 1. product name
@@ -13,7 +13,7 @@ Given a product display page, the web crawler extracts the following information
 
 The identification of product pages is made based on their category, which means that the developed crawler is pointed to a page with the products' category and manages to obtain the product pages, dealing with possible listing pagination.
 
-## URLs Suportadas
+## Possible URLs
 
 The crawler supports product categories from the website https://www.magazineluiza.com.br/. These are some examples of categories that could be done in this analysis:
 
