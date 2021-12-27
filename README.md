@@ -92,3 +92,5 @@ tempoMedioPorProduto
 tempoTotal 
 ```
 tempoOcioso is the total time spent waiting for the web pages to download, numProd is the total number of analyzed products, tempoMedioPorProduto is the total program execution time divided by the total analyzed products, and tempoTotal is the total program execution time
+
+Created at 2018.2
